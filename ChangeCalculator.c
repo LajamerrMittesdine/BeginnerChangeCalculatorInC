@@ -16,9 +16,10 @@ int main(void){
     //a[8] = Number of $0.25 coins,a[9] = Number of $0.10 coins
     //a[10]= Number of $0.05 coins,a[11]= Number of $0.01 coins
     int a[12] = {0,0,0,0,0,0,0,0,0,0,0,0};
+    
     //Denomination values converted to cents
-    //100.00 = 10000 cents, 0.01 = 1
-    const float b[12] = {10000,5000,2000,1000,500,200,100,50,25,10,5,1};
+    //$100 = 10000 cents, $0.01 = 1
+    const int b[12] = {10000,5000,2000,1000,500,200,100,50,25,10,5,1};
  
     //Get the user input values
     //Format is amount the user paid and the amount that is actually owed
