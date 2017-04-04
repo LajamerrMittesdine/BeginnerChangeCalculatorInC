@@ -13,5 +13,5 @@ Example Output:
 1 x $0.25
 2 x $0.10
 4 x $0.01
-The change is $680.49 and we calculated $680.49
+Debug Message: The change is $680.49 and we calculated $680.49
 ```
