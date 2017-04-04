@@ -10,8 +10,8 @@ int main(void){
     const int denominations[12] = {10000,5000,2000,1000,500,200,100,50,25,10,5,1};
     
     while (!feof(stdin)){
-		if (scanf("%d.%d %d.%d",&tender[0],&tender[1],&bill[0],&bill[1]) == 4) break;
- 	}
+	if (scanf("%d.%d %d.%d",&tender[0],&tender[1],&bill[0],&bill[1]) == 4) break;
+    }
     change = (((tender[0] * 100) + tender[1]) - ((bill[0] * 100) + bill[1]));
     for (size_t i = 0; i < sizeof denominations / sizeof *denominations; ++i){
         calculateChange(&change,denominations[i]);
