@@ -13,17 +13,18 @@ int main(void){
     scanf("%d.%d %d.%d",&input[0],&input[1],&input[2],&input[3]);
  
     //Calculate the difference
-    input[1] += input[0] * 100;
-    input[3] += input[2] * 100;
-    input[0] = input[1] - input[3];
+    input[0] = (((input[0] * 100) + input[1]) - ((input[2] * 100) + input[3]));
+    
+    //debug value only
+    int debugValue = input[0];
     
     //Calculate the change while updating its value and printing the result.
     for(int i = 0, n = (sizeof(a)/sizeof(a[0]))-1; i<=n; i++){
         calculateChange(&input[0],b[i],&a[i]);
     }
-    //Debugging Message Only
     //Verify the output
-    printf("The change is $%.2f and we calculated $%.2f\n",(input[1]-input[3])/100.00,
+    //Debug Message Only
+    printf("The change is $%.2f and we calculated $%.2f\n",(debugValue)/100.00,
     (a[0]*b[0]/100) + (a[1]*b[1]/100) + (a[2]*b[2]/100) + (a[3]*b[3]/100) + (a[4]*b[4]/100) +
     (a[5]*b[5]/100) + (a[6]*b[6]/100) + (a[7]*b[7]/100) + (a[8]*b[8]/100) + (a[9]*b[9]/100) +
     (a[10]*b[10]/100) + (a[11]*b[11]/100)
