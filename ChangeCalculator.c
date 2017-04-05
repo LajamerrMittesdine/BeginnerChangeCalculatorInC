@@ -3,7 +3,7 @@
  
 void calculateChange(unsigned int *change, unsigned int denominations);
 unsigned int countWords(FILE *f);
- 
+
 int main(void){
     unsigned int change = 0;
     unsigned int tender[2] = {0,0};
@@ -11,19 +11,16 @@ int main(void){
 
     FILE *myFiles;
     
-    //Get the number of lines of the file
-    myFiles = fopen("denominations.txt", "r");
-    const unsigned int size = countWords(myFiles);
-    fclose (myFiles);
-    //Set the array size of denominations to the number of lines in the file.
-    unsigned int denominations[size];
-    
     myFiles = fopen("denominations.txt", "r");
     
     if (myFiles == NULL){
         printf("Can't open file for reading.\n");
     }
     else{
+        const unsigned int size = countWords(myFiles);
+        fclose (myFiles);
+        myFiles = fopen("denominations.txt", "r");
+        unsigned int denominations[size];
     	for(unsigned int i = 0; i < sizeof(denominations)/sizeof(*denominations); ++i){
     		fscanf(myFiles, "%u", &denominations[i]);
     	}
