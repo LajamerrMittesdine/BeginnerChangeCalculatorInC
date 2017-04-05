@@ -21,15 +21,17 @@ int main(void){
         fclose (myFiles);
         myFiles = fopen("denominations.txt", "r");
         unsigned int denominations[size];
+
     	for(unsigned int i = 0; i < sizeof(denominations)/sizeof(*denominations); ++i){
     		fscanf(myFiles, "%u", &denominations[i]);
     	}
         fclose(myFiles);
+
         while (!feof(stdin)){
-		    if (scanf("%u.%u %u.%u",&tender[0],&tender[1],&bill[0],&bill[1]) == 4) break;
- 	    }
+		if (scanf("%u.%u %u.%u",&tender[0],&tender[1],&bill[0],&bill[1]) == 4) break;
+	}
  	    
- 	    //Get the change total in cents
+ 	//Get the change total in cents
         change = (((tender[0] * 100) + tender[1]) - ((bill[0] * 100) + bill[1]));
     
         for (unsigned int i = 0; i < sizeof(denominations)/sizeof(*denominations); ++i){
