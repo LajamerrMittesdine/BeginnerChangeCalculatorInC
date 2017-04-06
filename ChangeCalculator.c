@@ -53,7 +53,7 @@ unsigned int countWords(FILE *f){
  
 void calculateChange(unsigned int *change, unsigned int denominations){
     unsigned int count = *change / denominations;
-    *change = *change - denominations*count;
+    *change -= denominations*count;
     if(count > 0){
         printf("%u x $%u.%02u\n",count, denominations/100, denominations%100);
     }
