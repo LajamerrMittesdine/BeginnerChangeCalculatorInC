@@ -13,36 +13,30 @@ int main(void){
         printf("./denominations.txt either does not exist or can't be opened.\n");
         return 1;
     }
-    else{
-       unsigned int change = 0;
-       unsigned int tender[2] = {0,0};
-       unsigned int bill[2]  = {0,0};
-       unsigned int denominations[getSizeOfDenominations(myFiles)];
-       
-       if(sizeof(denominations)/sizeof(*denominations) == 0){
-           printf("./denominations.txt was empty.\n");
-           return 2;
-       }
-       
-       for(size_t i = 0; i < sizeof(denominations)/sizeof(*denominations); ++i){
-           fscanf(myFiles, "%u", &denominations[i]);
-       }
-       fclose(myFiles);
-       
-       while (!feof(stdin)){
-           if (scanf("%u.%u %u.%u",&tender[0],&tender[1],&bill[0],&bill[1]) == 4) break;
-       }
-       
-       //Get the change total in cents
-       change = (((tender[0] * 100) + tender[1]) - ((bill[0] * 100) + bill[1]));
-       
-       for (size_t i = 0; i < sizeof(denominations)/sizeof(*denominations); ++i){
-           calculateChange(&change,denominations[i]);
-       }
-       if(change > 0){
-           printf("The change wasn't completely divisible by the denominations set.\n"
-           "Your total change left over is $%u.%02u\n",change/100,change%100);
-       }
+    
+    if(getSizeOfDenominations(myFiles) == 0){
+        printf("./denominations.txt was empty.\n");
+        return 2;
+    }
+    
+    unsigned int denominations[getSizeOfDenominations(myFiles)];
+    
+    for(size_t i = 0; i < sizeof(denominations)/sizeof(*denominations); ++i){
+        fscanf(myFiles, "%u", &denominations[i]);
+    }
+    fclose(myFiles);
+    
+    unsigned int tender[2] = {0,0};
+    unsigned int bill[2]  = {0,0};
+    scanf("%u.%u %u.%u",&tender[0],&tender[1],&bill[0],&bill[1]);
+    unsigned int change = (((tender[0] * 100) + tender[1]) - ((bill[0] * 100) + bill[1]));
+    
+    for (size_t i = 0; i < sizeof(denominations)/sizeof(*denominations); ++i){
+        calculateChange(&change,denominations[i]);
+    }
+    if(change > 0){
+        printf("The change wasn't completely divisible by the denominations set.\n"
+        "Your total change left over is $%u.%02u\n",change/100,change%100);
     }
     return 0;
 }
