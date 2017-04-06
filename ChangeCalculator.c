@@ -10,7 +10,7 @@ int main(void){
     myFiles = fopen("denominations.txt", "r");
     
     if (myFiles == NULL){
-        printf("./denominations.txt either does not exist or can't be opened for reading.\n");
+        printf("./denominations.txt either does not exist or can't be opened.\n");
         return 1;
     }
     else{
@@ -40,7 +40,8 @@ int main(void){
            calculateChange(&change,denominations[i]);
        }
        if(change > 0){
-           printf("The total amount of change wasn't completely divisible by the denominations set.\nYour total change left over is $%u.%02u\n",change/100,change%100);
+           printf("The change wasn't completely divisible by the denominations set.\n"
+           "Your total change left over is $%u.%02u\n",change/100,change%100);
        }
     }
     return 0;
